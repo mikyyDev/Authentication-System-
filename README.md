@@ -1,6 +1,6 @@
 # 🔐 Authentication System
 
-# A complete **full-stack authentication system** built with **FastAPI** (Python) backend and **React + Vite** frontend. Features secure user registration, JWT authentication with refresh tokens, protected routes, and account management.
+ A complete **full-stack authentication system** built with **FastAPI** (Python) backend and **React + Vite** frontend. Features secure user registration, JWT authentication with refresh tokens, protected routes, and account management.
 
 Full-stack authentication system with a FastAPI backend and Vite frontend.
 
@@ -9,7 +9,6 @@ Full-stack authentication system with a FastAPI backend and Vite frontend.
 - Frontend (Vercel): https://authentication-system-flax.vercel.app
 - Backend (Render): https://authentication-system-jzfa.onrender.com
 - Health Check: https://authentication-system-jzfa.onrender.com/health
-  > > > > > > > 4c1ea6b (Adding a Screenshot for README)
 
 ## Live Demo
 
@@ -51,7 +50,6 @@ Full-stack authentication system with a FastAPI backend and Vite frontend.
 - Frontend calls backend using `VITE_API_URL`
 - Backend allows frontend origin through `CORS_ORIGINS`
 - Database is SQLite (`auth_db.sqlite`) managed by the backend service
-  > > > > > > > 4c1ea6b (Adding a Screenshot for README)
 
 ## 🛠️ Tech Stack
 
@@ -161,7 +159,6 @@ VITE_API_URL=https://authentication-system-jzfa.onrender.com
 - Passwords are hashed and never stored in plain text.
 - Keep `SECRET_KEY` private and rotate it when needed.
 - SQLite on a cloud web service is suitable for demos, but for long-term production use a managed database (for example, PostgreSQL).
-  <<<<<<< HEAD
 
 ## Error Handling
 
@@ -172,4 +169,4 @@ VITE_API_URL=https://authentication-system-jzfa.onrender.com
 ## Notes
 
 - Passwords are never stored in plain text.
-- # For local development, keep the backend running on `http://127.0.0.1:8000` and the frontend on `http://127.0.0.1:5173`.
+- For local development, keep the backend running on `http://127.0.0.1:8000` and the frontend on `http://127.0.0.1:5173`.
