@@ -4,8 +4,7 @@ A complete **full-stack authentication system** built with **FastAPI** (Python) 
 
 ## Live Demo
 - Frontend (Vercel): https://authentication-system-flax.vercel.app
-- Backend (Render): https://authentication-system-jzfa.onrender.com
-- Health Check: https://authentication-system-jzfa.onrender.com/health
+
 
 ![FastAPI](https://img.shields.io/badge/FastAPI-009688?style=for-the-badge&logo=fastapi&logoColor=white)
 ![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
