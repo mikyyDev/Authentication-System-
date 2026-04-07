@@ -6,9 +6,7 @@ Full-stack authentication system with a FastAPI backend and Vite frontend.
 
 ## Live Deployment
 
-- Frontend (Vercel): https://authentication-system-flax.vercel.app
-- Backend (Render): https://authentication-system-jzfa.onrender.com
-- Health Check: https://authentication-system-jzfa.onrender.com/health
+- (Vercel): https://authentication-system-flax.vercel.app
 
 ## Live Demo
 
