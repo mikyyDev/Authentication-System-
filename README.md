@@ -23,7 +23,7 @@ Full-stack authentication system with a FastAPI backend and Vite frontend.
 ## 📸 Screenshots
 
 ### Create Account Page
-![Create Account Page](./frontend/public/create account.png)
+![Create Account Page](./frontend/public/createaccount.png)
 
 ### Login Page
 ![Login Page](./frontend/public/login.png)
@@ -75,7 +75,6 @@ Full-stack authentication system with a FastAPI backend and Vite frontend.
 - python-jose (JWT)
 - passlib[bcrypt]
 - React + Vite
-  > > > > > > > 4c1ea6b (Adding a Screenshot for README)
 
 ## Project Structure
 
