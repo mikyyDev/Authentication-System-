@@ -1,28 +1,44 @@
-# Authentication System
+# 🔐 Authentication System
 
-FastAPI + SQLite backend with a Vite frontend for registration, login, profile lookup, and account deletion.
+A complete **full-stack authentication system** built with **FastAPI** (Python) backend and **React + Vite** frontend. Features secure user registration, JWT authentication with refresh tokens, protected routes, and account management.
 
-## Features
+## Live Demo
+- Frontend (Vercel): https://authentication-system-flax.vercel.app
+- Backend (Render): https://authentication-system-jzfa.onrender.com
+- Health Check: https://authentication-system-jzfa.onrender.com/health
 
-- User registration with hashed passwords
-- JWT login
+![FastAPI](https://img.shields.io/badge/FastAPI-009688?style=for-the-badge&logo=fastapi&logoColor=white)
+![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
+![Vite](https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white)
+![SQLite](https://img.shields.io/badge/SQLite-07405E?style=for-the-badge&logo=sqlite&logoColor=white)
+![JWT](https://img.shields.io/badge/JWT-000000?style=for-the-badge&logo=JSON%20web%20tokens&logoColor=white)
+
+## 📸 Screenshots
+
+## ✨ Features
+
+- Secure user registration with **bcrypt** password hashing
+- JWT Access Token + Refresh Token authentication
 - Protected `/me` profile endpoint
-- Account deletion
-- Refresh tokens
-- Rate limiting on sensitive endpoints
-- Request logging
-- SQLite database
-- CORS enabled for frontend/mobile clients
-- Health check endpoint
+- Secure account deletion
+- Refresh token rotation
+- Rate limiting on login (prevents brute-force attacks)
+- Request logging middleware
+- CORS configured for frontend
+- SQLite database with SQLAlchemy
+- Automatic Swagger UI & ReDoc documentation
 
-## Tech Stack
+## 🛠️ Tech Stack
 
-- FastAPI
-- SQLite
-- SQLAlchemy
-- JWT via `python-jose`
-- Password hashing via `passlib[bcrypt]`
-- React + Vite
+**Backend:** FastAPI, SQLAlchemy, python-jose, passlib[bcrypt], SlowAPI  
+**Frontend:** React + Vite
+
+## Architecture
+- Frontend is deployed on Vercel (`frontend/`)
+- Backend API is deployed on Render (`backend/`)
+- Frontend calls backend using `VITE_API_URL`
+- Backend allows frontend origin through `CORS_ORIGINS`
+- Database is SQLite (`auth_db.sqlite`) managed by the backend service
 
 ## Project Structure
 
@@ -33,167 +49,83 @@ FastAPI + SQLite backend with a Vite frontend for registration, login, profile l
 
 ### Backend
 
-1. Create and activate a virtual environment.
-2. Install dependencies from `backend/requirements.txt`.
-3. Set environment variables.
-4. Run the API with Uvicorn.
-
-Example:
-
 ```bash
-cd "C:\Users\micha\Desktop\New folder\Fluentian\Authentication system"
 pip install -r backend/requirements.txt
 uvicorn backend.main:app --reload
 ```
 
 ### Frontend
 
-1. Install dependencies from `frontend/package.json`.
-2. Set `VITE_API_URL` to your backend URL if you are not using the local default.
-3. Run the app with Vite.
-
-Example:
-
 ```bash
-cd "C:\Users\micha\Desktop\New folder\Fluentian\Authentication system\frontend"
+cd frontend
 npm install
 npm run dev
 ```
-
 ## Environment Variables
 
-- `SECRET_KEY` - JWT signing secret
-- `ALGORITHM` - JWT algorithm, default `HS256`
-- `ACCESS_TOKEN_EXPIRE_MINUTES` - token lifetime, default `30`
-- `REFRESH_TOKEN_EXPIRE_DAYS` - refresh token lifetime, default `7`
-- `CORS_ORIGINS` - comma-separated list of allowed origins, default `*`
-- `LOGIN_RATE_LIMIT` - login attempts per window, default `5`
-- `LOGIN_RATE_LIMIT_WINDOW_SECONDS` - login rate limit window, default `60`
-- `SEND_CODE_RATE_LIMIT` - OTP requests per window, default `3`
-- `SEND_CODE_RATE_LIMIT_WINDOW_SECONDS` - OTP rate limit window, default `300`
+### Backend (`.env`)
 
-Example `.env`:
+- `SECRET_KEY` - JWT signing secret
+- `ALGORITHM` - JWT algorithm (default: `HS256`)
+- `ACCESS_TOKEN_EXPIRE_MINUTES` - access token expiry (default: `30`)
+- `REFRESH_TOKEN_EXPIRE_DAYS` - refresh token expiry (default: `7`)
+- `CORS_ORIGINS` - comma-separated allowed origins
+- `LOGIN_RATE_LIMIT` - login attempts per window (default: `5`)
+- `LOGIN_RATE_LIMIT_WINDOW_SECONDS` - login window in seconds (default: `60`)
+- `SEND_CODE_RATE_LIMIT` - send-code attempts per window (default: `3`)
+- `SEND_CODE_RATE_LIMIT_WINDOW_SECONDS` - send-code window in seconds (default: `300`)
+
+Example:
 
 ```env
 SECRET_KEY=replace-with-a-long-random-secret
 ALGORITHM=HS256
 ACCESS_TOKEN_EXPIRE_MINUTES=30
-CORS_ORIGINS=http://localhost:5173,http://127.0.0.1:5173
+REFRESH_TOKEN_EXPIRE_DAYS=7
+CORS_ORIGINS=https://authentication-system-flax.vercel.app,http://localhost:5173,http://127.0.0.1:5173
 ```
 
-Frontend environment example:
+### Frontend (Vercel Environment Variable)
+
+- `VITE_API_URL` - backend base URL
+
+Example:
 
 ```env
-VITE_API_URL=http://127.0.0.1:8000
+VITE_API_URL=https://authentication-system-jzfa.onrender.com
 ```
+
+## Deployment
+
+### Backend on Render (Web Service)
+
+- Root Directory: `backend`
+- Build Command: `pip install -r requirements.txt`
+- Start Command: `bash start.sh`
+
+### Frontend on Vercel
+
+- Root Directory: `frontend`
+- Build Command: `npm run build`
+- Output Directory: `dist`
+- Routing file: `frontend/vercel.json`
 
 ## API Endpoints
 
-`GET /health`
+- `GET /health`
+- `POST /register`
+- `POST /login`
+- `POST /refresh`
+- `GET /me`
+- `DELETE /delete-account`
+- `POST /send-code`
+- `POST /verify`
 
-Response:
+## Production Notes
 
-```json
-{ "message": "ok" }
-```
-
-### Register
-
-`POST /register`
-
-Request:
-
-```json
-{
-  "name": "John Doe",
-  "email": "john@example.com",
-  "password": "strongpassword123"
-}
-```
-
-Response:
-
-```json
-{
-  "id": 1,
-  "name": "John Doe",
-  "email": "john@example.com"
-}
-```
-
-### Login
-
-`POST /login`
-
-Request (`application/x-www-form-urlencoded`):
-
-`username=john@example.com&password=strongpassword123`
-
-Response:
-
-```json
-{
-  "access_token": "jwt-token-here",
-  "token_type": "bearer",
-  "refresh_token": "refresh-token-here"
-}
-```
-
-### Refresh Token
-
-`POST /refresh`
-
-Request:
-
-```json
-{ "refresh_token": "refresh-token-here" }
-```
-
-Response:
-
-```json
-{
-  "access_token": "new-access-token-here",
-  "token_type": "bearer",
-  "refresh_token": "new-refresh-token-here"
-}
-```
-
-### Current User
-
-`GET /me`
-
-Headers:
-
-```http
-Authorization: Bearer <token>
-```
-
-Response:
-
-```json
-{
-  "id": 1,
-  "name": "John Doe",
-  "email": "john@example.com"
-}
-```
-
-### Delete Account
-
-`DELETE /delete-account`
-
-Headers:
-
-```http
-Authorization: Bearer <token>
-```
-
-Response:
-
-```json
-{ "message": "Account deleted successfully" }
-```
+- Passwords are hashed and never stored in plain text.
+- Keep `SECRET_KEY` private and rotate it when needed.
+- SQLite on a cloud web service is suitable for demos, but for long-term production use a managed database (for example, PostgreSQL).
 
 ## Error Handling
 
