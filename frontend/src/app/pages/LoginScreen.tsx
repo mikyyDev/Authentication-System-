@@ -1,7 +1,7 @@
 import { useMemo, useState } from "react";
 import { useLocation, useNavigate } from "react-router";
 import { motion } from "motion/react";
-import { Shield, Mail, Lock, AlertCircle, Eye, EyeOff } from "lucide-react";
+import { Mail, Lock, AlertCircle, Eye, EyeOff } from "lucide-react";
 import { Button } from "../components/ui/button";
 import { Input } from "../components/ui/input";
 import { Label } from "../components/ui/label";
@@ -70,9 +70,11 @@ export function LoginScreen() {
         className="w-full max-w-md"
       >
         <div className="flex flex-col items-center mb-8">
-          <div className="w-16 h-16 bg-[#4F46E5] rounded-xl flex items-center justify-center shadow-md mb-4">
-            <Shield className="w-10 h-10 text-white" />
-          </div>
+          <img
+            src="/aut-logo.png"
+            alt="Auth logo"
+            className="w-16 h-16 object-contain mb-4"
+          />
           <h1 className="text-2xl font-bold text-gray-900">Welcome Back</h1>
           <p className="text-gray-500 mt-1">Login to your account</p>
         </div>

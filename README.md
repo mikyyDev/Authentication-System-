@@ -1,10 +1,19 @@
 # 🔐 Authentication System
 
-A complete **full-stack authentication system** built with **FastAPI** (Python) backend and **React + Vite** frontend. Features secure user registration, JWT authentication with refresh tokens, protected routes, and account management.
+# A complete **full-stack authentication system** built with **FastAPI** (Python) backend and **React + Vite** frontend. Features secure user registration, JWT authentication with refresh tokens, protected routes, and account management.
+
+Full-stack authentication system with a FastAPI backend and Vite frontend.
+
+## Live Deployment
+
+- Frontend (Vercel): https://authentication-system-flax.vercel.app
+- Backend (Render): https://authentication-system-jzfa.onrender.com
+- Health Check: https://authentication-system-jzfa.onrender.com/health
+  > > > > > > > 4c1ea6b (Adding a Screenshot for README)
 
 ## Live Demo
-- Frontend (Vercel): https://authentication-system-flax.vercel.app
 
+- Frontend (Vercel): https://authentication-system-flax.vercel.app
 
 ![FastAPI](https://img.shields.io/badge/FastAPI-009688?style=for-the-badge&logo=fastapi&logoColor=white)
 ![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
@@ -25,7 +34,24 @@ A complete **full-stack authentication system** built with **FastAPI** (Python) 
 - Request logging middleware
 - CORS configured for frontend
 - SQLite database with SQLAlchemy
-- Automatic Swagger UI & ReDoc documentation
+- # Automatic Swagger UI & ReDoc documentation
+- User registration with password hashing
+- JWT access token login
+- Refresh token flow
+- Protected profile endpoint (`/me`)
+- Account deletion endpoint
+- Email verification code flow (demo mode)
+- Rate limiting on sensitive endpoints
+- Request logging middleware
+
+## Architecture
+
+- Frontend is deployed on Vercel (`frontend/`)
+- Backend API is deployed on Render (`backend/`)
+- Frontend calls backend using `VITE_API_URL`
+- Backend allows frontend origin through `CORS_ORIGINS`
+- Database is SQLite (`auth_db.sqlite`) managed by the backend service
+  > > > > > > > 4c1ea6b (Adding a Screenshot for README)
 
 ## 🛠️ Tech Stack
 
@@ -33,18 +59,27 @@ A complete **full-stack authentication system** built with **FastAPI** (Python) 
 **Frontend:** React + Vite
 
 ## Architecture
+
 - Frontend is deployed on Vercel (`frontend/`)
 - Backend API is deployed on Render (`backend/`)
 - Frontend calls backend using `VITE_API_URL`
 - Backend allows frontend origin through `CORS_ORIGINS`
 - Database is SQLite (`auth_db.sqlite`) managed by the backend service
 
+- FastAPI
+- SQLAlchemy
+- SQLite
+- python-jose (JWT)
+- passlib[bcrypt]
+- React + Vite
+  > > > > > > > 4c1ea6b (Adding a Screenshot for README)
+
 ## Project Structure
 
-- `backend/` - FastAPI app, models, schemas, and auth helpers
-- `frontend/` - Vite app for the user interface
+- `backend/` - FastAPI app, models, schemas, and security utilities
+- `frontend/` - Vite React app
 
-## Setup
+## Local Development
 
 ### Backend
 
@@ -60,6 +95,7 @@ cd frontend
 npm install
 npm run dev
 ```
+
 ## Environment Variables
 
 ### Backend (`.env`)
@@ -125,6 +161,7 @@ VITE_API_URL=https://authentication-system-jzfa.onrender.com
 - Passwords are hashed and never stored in plain text.
 - Keep `SECRET_KEY` private and rotate it when needed.
 - SQLite on a cloud web service is suitable for demos, but for long-term production use a managed database (for example, PostgreSQL).
+  <<<<<<< HEAD
 
 ## Error Handling
 
@@ -135,4 +172,4 @@ VITE_API_URL=https://authentication-system-jzfa.onrender.com
 ## Notes
 
 - Passwords are never stored in plain text.
-- For local development, keep the backend running on `http://127.0.0.1:8000` and the frontend on `http://127.0.0.1:5173`.
+- # For local development, keep the backend running on `http://127.0.0.1:8000` and the frontend on `http://127.0.0.1:5173`.
