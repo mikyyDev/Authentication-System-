@@ -8,9 +8,6 @@ Full-stack authentication system with a FastAPI backend and Vite frontend.
 
 - (Vercel): https://authentication-system-flax.vercel.app
 
-## Live Demo
-
-- Frontend (Vercel): https://authentication-system-flax.vercel.app
 
 ![FastAPI](https://img.shields.io/badge/FastAPI-009688?style=for-the-badge&logo=fastapi&logoColor=white)
 ![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
