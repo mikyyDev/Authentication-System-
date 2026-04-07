@@ -22,6 +22,11 @@ Full-stack authentication system with a FastAPI backend and Vite frontend.
 
 ## 📸 Screenshots
 
+### Create Account Page
+![Create Account Page](./frontend/public/create account.png)
+
+### Login Page
+![Login Page](./frontend/public/login.png)
 ## ✨ Features
 
 - Secure user registration with **bcrypt** password hashing
@@ -33,7 +38,7 @@ Full-stack authentication system with a FastAPI backend and Vite frontend.
 - Request logging middleware
 - CORS configured for frontend
 - SQLite database with SQLAlchemy
-- # Automatic Swagger UI & ReDoc documentation
+-  Automatic Swagger UI & ReDoc documentation
 - User registration with password hashing
 - JWT access token login
 - Refresh token flow
